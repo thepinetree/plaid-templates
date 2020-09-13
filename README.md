@@ -10,7 +10,7 @@ $ git clone https://github.com/thepinetree/ModernHomeworkTemplate.git
 ```
 $ cd LaTeX/
 ```
-3. Edit the `Information` section in modern-homework.cls to match your information and the hw_example.tex for your typesetting!
+3. Edit the `Information` section at the bottom of `modern-homework.cls` to match your information and the `hw_example.tex` for your typesetting!
 4. Build your homework document:
 ```
 pdflatex hw_example.tex
