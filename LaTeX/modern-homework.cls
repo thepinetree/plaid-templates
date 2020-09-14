@@ -301,10 +301,6 @@ basicstyle=\small\ttfamily,
 %******************************************************************************%
 %*                                Information                                 *%
 %******************************************************************************%
-% Personal Information
-\newcommand{\name}{Sayan Chaudhry, Deepayan Patra}
-\newcommand{\andrewid}{\texttt{sayanc, dpatra}}
-
 % Document header
 \newcommand{\passport}[1]{%
     \thispagestyle{plain}
