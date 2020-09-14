@@ -6,12 +6,16 @@ To create this homework template:
 ```
 $ git clone https://github.com/thepinetree/ModernHomeworkTemplate.git
 ```
-2. Enter the LaTeX Folder:
+2. Enter the repository
+```
+$ cd ModernHomeworkTemplate
+```
+3. Enter the LaTeX Folder:
 ```
 $ cd LaTeX/
 ```
-3. Edit the `Information` section at the bottom of `modern-homework.cls` to match your information and the `hw_example.tex` for your typesetting!
-4. Build your homework document:
+4. Edit the `Information` section at the bottom of `modern-homework.cls` to match your information and the `hw_example.tex` for your typesetting!
+5. Build your homework document:
 ```
-pdflatex hw_example.tex
+$ pdflatex hw_example.tex
 ```
