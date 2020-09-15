@@ -8,7 +8,7 @@ $ git clone https://github.com/thepinetree/plaid-templates.git
 ```
 2. Enter the repository
 ```
-$ cd plaid-homework
+$ cd plaid-templates
 ```
 3. Enter the LaTeX Folder:
 ```
