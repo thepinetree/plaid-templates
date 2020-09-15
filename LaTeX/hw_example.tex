@@ -1,5 +1,9 @@
 \documentclass[]{modern-homework}
 
+% Personal Information
+\newcommand{\name}{Sayan Chaudhry, Deepayan Patra}
+\newcommand{\andrewid}{\texttt{sayanc, dpatra}}
+
 % Course Settings
 \newcommand{\course}{07-131}
 \newcommand{\recitation}{A}
@@ -14,7 +18,6 @@
 
 \problem{1}{Math}
 LaTeX is awesome for math! Let's look evaluating the value of $m$ if $(m + 2) \times (3 + 4) = 21$ in two ways.
-
 
 Using the initial equality:
 \begin{align*}
@@ -87,6 +90,7 @@ Alright, no more problems. Just two more equations.
   \iiint_{V} (\nabla \times \mathbf{F}) \di V
   &= \oiint \hat{\mathbf{n}} \times \mathbf{F} \di S
 \end{align*}
+
 \newpage
 
 \problem{3}{Programming}
@@ -175,4 +179,66 @@ and here's a plot of $y = x^2$:
   \end{axis}
   \end{tikzpicture}
 \end{center}
+
+\newpage
+
+\problem{4}{Images}
+You can make some really pretty images and figures in LaTeX too!
+
+\vspace{7em}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=.8\linewidth]{CMU.png}
+  \caption{CMU}
+  \label{fig:CMU}
+\end{figure}
+
+\vspace{7em}
+
+\begin{figure}[h]
+  \begin{subfigure}[t]{0.33\textwidth}
+    \centering
+    \includegraphics[width=.8\linewidth]{amzn.png}
+    \caption{Amazon}
+    \label{fig:Amazon}
+  \end{subfigure}
+  \begin{subfigure}[t]{0.33\textwidth}
+    \centering
+    \includegraphics[width=.8\linewidth]{apple.png}
+    \caption{Apple}
+    \label{fig:Apple}
+  \end{subfigure}
+  \begin{subfigure}[t]{0.33\textwidth}
+    \centering
+    \includegraphics[width=.8\linewidth]{fb.png}
+    \caption{Facebook}
+    \label{fig:Facebook}
+  \end{subfigure}
+  \begin{subfigure}[t]{0.33\textwidth}
+    \centering
+    \includegraphics[width=.8\linewidth]{goog.png}
+    \caption{Google}
+    \label{fig:Google}
+  \end{subfigure}
+  \begin{subfigure}[t]{0.33\textwidth}
+    \centering
+    \includegraphics[width=.8\linewidth]{msft.png}
+    \caption{Microsoft}
+    \label{fig:Microsoft}
+  \end{subfigure}
+  \begin{subfigure}[t]{0.33\textwidth}
+    \centering
+    \includegraphics[width=.8\linewidth]{netf.png}
+    \caption{Netflix}
+    \label{fig:Netflix}
+  \end{subfigure}
+  \caption{FAANG logos}
+  \label{fig:FAANG}
+\end{figure}
+
+\vspace{7em}
+
+and can reference back to them! Take me to \nameref{fig:FAANG} or take me to  \nameref{fig:CMU}.
+
 \end{document}

@@ -106,7 +106,11 @@ basicstyle=\small\ttfamily,
 \pgfplotsset{compat=1.7}
 % Library for patterned output (e.g. in plots)
 \usetikzlibrary{patterns} 
-
+% Package to create figures and subfigures
+\RequirePackage{caption}
+\RequirePackage{subcaption}
+% Package to position figures
+\RequirePackage{float}
 
 % Package for stronger enumeration control
 \RequirePackage{enumitem}
@@ -297,10 +301,6 @@ basicstyle=\small\ttfamily,
 %******************************************************************************%
 %*                                Information                                 *%
 %******************************************************************************%
-% Personal Information
-\newcommand{\name}{Sayan Chaudhry, Deepayan Patra}
-\newcommand{\andrewid}{\texttt{sayanc, dpatra}}
-
 % Document header
 \newcommand{\passport}[1]{%
     \thispagestyle{plain}
