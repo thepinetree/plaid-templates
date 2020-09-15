@@ -90,28 +90,28 @@
 %* Spacing                                                                    *%
 %******************************************************************************%
 
-% Paragraph spacing options
+% Paragraph Spacing Options
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{5pt plus 1pt}
 
-% Header spacing options
+% Header Spacing Options
 \setlength{\headsep}{1.7em}
 \setlength{\headheight}{30pt}
 
-% Line spacing options
+% Line Spacing Options
 \renewcommand{\baselinestretch}{1.25}
 
 %******************************************************************************%
 %* Headers                                                                    *%
 %******************************************************************************%
 
-% Non-first page header
+% Page Header (Normal)
 \pagestyle{fancy}
 \lhead{\fancyplain{}{\textbf{Homework~\homework}}} 
 \rhead{\fancyplain{}{\name\linebreak\andrewid}}
 \chead{\fancyplain{}{\texttt{\course}}}
 
-% First page header
+% Page Header (First)
 \newcommand{\passport}[1]{%
     \thispagestyle{plain}
     \begin{flushright}
@@ -136,7 +136,7 @@
 %* Code                                                                       *%
 %******************************************************************************%
 
-% Code typsetting settings
+% Code Typsetting Settings
 \lstset{
   language=C++,                      % the language of the code
   basicstyle=\small\ttfamily,        % code font and style
@@ -163,7 +163,7 @@
   morecomment=[l][\color{RoyalBlue}]{\#} % more coloring for special strings
 }
 
-% SML programming declaration
+% SML Programming Declaration
 \lstdefinelanguage{sml}{
 basicstyle=\small\ttfamily,
   captionpos=b,
@@ -198,24 +198,31 @@ basicstyle=\small\ttfamily,
     \vspace{.5em}
 }
 
-% Spaced partition
+% Spaced Partition
 \newcommand{\spacepart}{
     \vspace{5em}
 }
 
-% Star partition
+% Star Partition
 \newcommand{\starpart}{
     \begin{center} 
     \texttt{*}
     \end{center}
 }
 
-% Underline
-\newcommand{\ul}[1]{\underline{#1}}
-
 %******************************************************************************%
 %* Macros: Math                                                               *%
 %******************************************************************************%
+
+% Mathematical Functions
+\renewcommand{\abs}[1]{\lvert #1 \rvert}            % absolute value
+\newcommand{\logn}{\log n}                          % log n
+\newcommand{\logp}[1]{\log{\left({#1}\right}}       % parenthesized log
+
+% Strings
+\newcommand{\enc}[1]{\langle #1 \rangle}            % encoding
+\newcommand{\blanksymbol}{\text{\textvisiblespace}} % blank space
+\renewcommand{\epsilon}{\varepsilon}                % epsilon/empty string
 
 % Sets
 \renewcommand{\emptyset}{\varnothing}               % empty set
@@ -254,56 +261,23 @@ basicstyle=\small\ttfamily,
 % Induction
 \newcommand{\pn}{Define P\left($n$\right) as: }
 \newcommand{\st}{\text{ s.t. }}                             
-\newcommand{\RHS}{\ul{\textsf{RHS:}}}
-\newcommand{\LHS}{\ul{\textsf{LHS:}}}
-\newcommand{\BC}{\ul{\textsf{Base Case:}}}
-\newcommand{\BCS}{\ul{\textsf{Base Cases:}}}
-\newcommand{\IH}{\ul{\textsf{Induction Hypothesis:}}}
-\newcommand{\IS}{\ul{\textsf{Induction Step:}}}
+\newcommand{\RHS}{\underline{\textsf{RHS:}}}
+\newcommand{\LHS}{\underline{\textsf{LHS:}}}
+\newcommand{\BC}{\underline{\textsf{Base Case:}}}
+\newcommand{\BCS}{\underline{\textsf{Base Cases:}}}
+\newcommand{\IH}{\underline{\textsf{Induction Hypothesis:}}}
+\newcommand{\IS}{\underline{\textsf{Induction Step:}}}
 
-
-
-
-% Symbols
-\newcommand{\blanksymbol}{\text{\textvisiblespace}} % blank space
-\renewcommand{\epsilon}{\varepsilon}                % epsilon/empty string
-
-
-
-% Operations 
-\renewcommand{\abs}[1]{\lvert #1 \rvert}            % absolute value
-\newcommand{\enc}[1]{\langle #1 \rangle}            % encoding
-\newcommand{\logn}{\log n}                          % log n
-\newcommand{\logp}[1]{\log{\left({#1}\right}}       % parenthesized log
-
-
-
-
-
-% Binary set
-\DeclareMathOperator{\di}{d\!} %d_ differential
-
-
-
-% Math Commands :: Calculus
-% Simple derivative
-% Style: \deriv {dependent var} {independent var}
+% Calculus
+% Usage: \deriv {dependent var} {independent var}
 \newcommand{\deriv}[2]{\frac{d #1}{d #2}}
-% Partial derivative
-% Style: \partderiv {dependent var} {independent var}
+% Usage: \partderiv {dependent var} {independent var}
 \newcommand{\partderiv}[2]{\frac{\partial #1}{\partial #2}} 
-% Evaluate at
-% Style: \eval {function} {var=lower bound} {upper bound}
-\renewcommand{\eval}[3]{\left.#1\right\rvert_{#2}^{#3}} % evaluate at
-
-
-
-% Distributed as
-% Style: A \distas {distribution} B
-\newcommand{\distas}[1]{\overset{#1}{\sim}} 
-
-
-
+% Usage: \eval {function} {var=lower bound} {upper bound}
+\renewcommand{\eval}[3]{\left.#1\right\rvert_{#2}^{#3}}
+% Usage: A \distas{distribution} B
+\newcommand{\distas}[1]{\overset{#1}{\sim}}
+\DeclareMathOperator{\di}{d\!}
 
 %******************************************************************************%
 %* Macros: Theoretical Computer Science                                       *%
@@ -340,14 +314,11 @@ basicstyle=\small\ttfamily,
 \newcommand{\nae}{\textsf{NAE-3SAT}}
 \newcommand{\csat}{\textsf{CIRCUIT-SAT}}
 
-
 %******************************************************************************%
 %* Macros: Logic                                                              *%
 %******************************************************************************%
 
-
-
-
+% Logical Operators
 \renewcommand{\t}{\ true}
 \newcommand{\lime}{\lim E}
 \newcommand{\limu}{\lim I^u}
@@ -357,6 +328,7 @@ basicstyle=\small\ttfamily,
 \newcommand{\landl}{\land E_1}
 \newcommand{\landr}{\land E_2}
 
+% Proof Trees
 \newcommand{\assume}[2]{\infer[#1]{#2}{}}
 \newcommand{\assumeid}[1]{\infer[\textsf{id}]{#1}{}}
 \newcommand{\assumesf}[2]{\infer[\textsf{#1}]{#2}{}}
@@ -368,16 +340,18 @@ basicstyle=\small\ttfamily,
 \newcommand{\deducecal}[2]{\deduce{#1}{\mathcal{#2}}}
 \newcommand{\deducetext}[2]{\deduce{#1}{#2}}
 \newcommand{\atomic}[1]{\infer[\downarrow\uparrow]{#1 \uparrow}{#1 \downarrow}}
-\newcommand{\seq}{\Longrightarrow}
 
+% Sequent Calculus
+\newcommand{\seq}{\Longrightarrow}
+\newcommand{\lseq}{\Vdash}
+
+% Linear Logic
 \newcommand{\jtrue}{\;\mbox{\it true}}
 \newcommand{\jres}{\;\mbox{\it res}}
 \newcommand{\jures}{\;\mbox{\it ures}}
-
 \newcommand{\lolli}{\multimap}
 \newcommand{\tensor}{\otimes}
 \newcommand{\with}{\&}
 \newcommand{\paar}{\mathbin{\bindnasrepma}}
 \newcommand{\bang}{{!}}
 \newcommand{\whynot}{{?}}
-\newcommand{\lseq}{\Vdash}
