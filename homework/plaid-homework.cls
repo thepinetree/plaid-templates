@@ -277,6 +277,7 @@ basicstyle=\small\ttfamily,
 \renewcommand{\eval}[3]{\left.#1\right\rvert_{#2}^{#3}}
 % Usage: A \distas{distribution} B
 \newcommand{\distas}[1]{\overset{#1}{\sim}}
+% Usage: \di
 \DeclareMathOperator{\di}{d\!}
 
 %******************************************************************************%
