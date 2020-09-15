@@ -3,7 +3,7 @@
 %******************************************************************************%
 % Define Class
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{modern-homework}[2020/09/12 Homework Template Class, 
+\ProvidesClass{plaid-homework}[2020/09/12 Homework Template Class, 
                                 made by Sayan Chaudhry and Deepayan Patra]
 
 % Inherit `article' document type and set font to 10pt
