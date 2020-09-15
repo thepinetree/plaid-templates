@@ -1,10 +1,10 @@
-# plaid-homework
+# plaid-templates
 
 ### Usage
 To create this homework template:
 1. Copy the repository
 ```
-$ git clone https://github.com/thepinetree/plaid-homework.git
+$ git clone https://github.com/thepinetree/plaid-templates.git
 ```
 2. Enter the repository
 ```
