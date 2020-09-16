@@ -1,8 +1,10 @@
-# plaid-templates
+# Plaid Templates
+
+This repository features a useful set of templates for Carnegie Mellon University students and all other university students.
 
 ### Usage
-To create this homework template:
-1. Copy the repository
+To make these templates a part of your own life:
+1. Clone this repository
 ```
 $ git clone https://github.com/thepinetree/plaid-templates.git
 ```
@@ -10,12 +12,15 @@ $ git clone https://github.com/thepinetree/plaid-templates.git
 ```
 $ cd plaid-templates
 ```
-3. Enter the LaTeX Folder:
+3. Enter the directory for the template you want, say `homework`
 ```
-$ cd LaTeX/
+$ cd homework
 ```
-4. Edit the `Information` section at the bottom of `plaid-homework.cls` to match your information and the `hw_example.tex` for your typesetting!
-5. Build your homework document:
+4. Follow the instructions in the `README.md` file
 ```
-$ pdflatex hw_example.tex
+$ cat README.md
 ```
+
+### Contributors
+
+This is a brainchild of [Deepayan Patra](https://deepayan.dev/) and [Sayan Chaudhry](https://www.sayan.io) but we are always looking for enhancements and more templates!
