@@ -1,23 +1,23 @@
 \documentclass[]{plaid-homework}
 
-% Personal Information
+% Settings: Personal Information
 \newcommand{\name}{Sayan Chaudhry, Deepayan Patra}
 \newcommand{\andrewid}{\texttt{sayanc, dpatra}}
 
-% Course Settings
+% Settings: Course
 \newcommand{\course}{07-131}
 \newcommand{\recitation}{A}
 \newcommand{\professor}{Cortina}
 
-% Assignment Settings
+% Settings: Assignment
 \newcommand{\homework}{3}
 
-\begin{document}  
+\begin{document}
 \passport{}
 \title
 
 \problem{1}{Math}
-LaTeX is awesome for math! Let's look evaluating the value of $m$ if $(m + 2) \times (3 + 4) = 21$ in two ways.
+\LaTeX is awesome for math! Let's look evaluating the value of $m$ if $(m + 2) \times (3 + 4) = 21$ in two ways.
 
 Using the initial equality:
 \begin{align*}
@@ -52,9 +52,28 @@ Therefore:
 \newpage
 
 \problem{2}{Induction}
-Induction becomes so much easier with LaTeX! Take a look:
+Induction becomes so much easier with \LaTeX! Have a look!
 
-\ul{hello}
+Define \pn as $n > n - 1$.
+
+We will now show that \pn holds for all $n \in \N^+$.
+
+\BC $n = 1$
+
+\px{1} holds because $1 > 0$.
+
+\IH Assume that \pk holds for arbitrary $k \geq 1$.
+
+\IS We want to show that \pkpo holds.
+
+Observe that:
+\begin{align*}
+          && k &\geq k - 1 \tag{by IH}
+\\\implies&& k + 1 &\geq k - 1 + 1 \tag{adding 1 to both sides}
+\\\implies&& k + 1 &\geq k \tag{evaluating $1 - 1 = 0$}
+\end{align*}
+
+Hence, \pk is true. Since \pk implies \pkpo and \px{1} is true, by the principle of mathematical induction \pn holds for $n \in \N^+$.
 
 \newpage
 
@@ -97,7 +116,7 @@ Alright, no more problems. Just two more equations.
 
 \problem{3}{Programming}
 
-You can code in LaTeX too! Here's an intro to typesetting programs:
+You can code in \LaTeX too! Here's an intro to typesetting programs:
 \begin{lstlisting}
   #include<stdio.h> 
   #include<iostream>
@@ -141,7 +160,7 @@ or here:
 \newpage
 
 \problem{4}{Graphing}
-Plotting in Latex is super fun! Here's a mini graph with some shading:
+Plotting in \LaTeX is super fun! Here's a mini graph with some shading:
 \begin{center}
   \begin{tikzpicture}
       \begin{axis}[

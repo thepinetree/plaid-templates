@@ -1,5 +1,5 @@
 %******************************************************************************%
-%* Classes                                                                    *%
+%*                                  Classes                                   *%
 %******************************************************************************%
 
 % Define Class
@@ -12,7 +12,7 @@
 \ProcessOptions\relax
 
 %******************************************************************************%
-%* Useful Packages                                                            *%
+%*                                  Packages                                  *%
 %******************************************************************************%
 
 % For defining page setup
@@ -28,11 +28,17 @@
 \RequirePackage{etoolbox}
 
 % For working with math and symbols by the American Mathematical Society
-\RequirePackage{amsmath, amssymb, amsfonts, amsthm}  
+\RequirePackage{amsmath, amssymb, amsfonts, amsthm}
 % For better, more beautiful math support
 \RequirePackage{mathtools}
+% For formatting math such as differentials
+\RequirePackage{commath} 
+% For formatting higher order integrals
+\RequirePackage{esint}
+
 % For better, more beautiful code support (including syntax coloring!)
 \RequirePackage{listings}
+
 % For supporting more colors
 \RequirePackage[usenames,svgnames]{xcolor}
 
@@ -58,7 +64,10 @@
 
 % For image support
 \RequirePackage{graphicx}
-\graphicspath{{assets/}}  
+\graphicspath{
+    % default path for graphics, i.e. upload all images to assets/ 
+    {assets/}
+}
 % For creating your own vector graphics
 \RequirePackage{tikz}
 % For creating your own plots
@@ -72,22 +81,18 @@
 % For positioning figures
 \RequirePackage{float}
 
-% For conditionals
+% For conditionals in LaTeX
 \RequirePackage{ifthen}
-
 % For multi-line comments
 \RequirePackage{comment}
 % For easy placeholder text generation
-\RequirePackage{lipsum} 
+\RequirePackage{lipsum}
+
 % For horizontally centering the \not command
 \RequirePackage{centernot}
-% For formatting math such as differentials
-\RequirePackage{commath} 
-% For formatting higher order integrals
-\RequirePackage{esint}
 
 %******************************************************************************%
-%* Spacing                                                                    *%
+%*                                  Spacing                                   *%
 %******************************************************************************%
 
 % Paragraph Spacing Options
@@ -102,7 +107,7 @@
 \renewcommand{\baselinestretch}{1.25}
 
 %******************************************************************************%
-%* Headers                                                                    *%
+%*                                  Headers                                   *%
 %******************************************************************************%
 
 % Page Header (Normal)
@@ -133,8 +138,29 @@
 } 
 
 %******************************************************************************%
-%* Code                                                                       *%
+%*                                    Code                                    *%
 %******************************************************************************%
+
+% SML Programming Declaration
+\lstdefinelanguage{sml}{
+basicstyle=\small\ttfamily,
+  captionpos=b,
+  tabsize=2,
+  columns=fixed,
+  breaklines=true,
+  numbers=none,
+  numberstyle=\small\ttfamily,
+  morekeywords= {
+    unit, int, bool, real, char, string,
+    fn, fun,
+    if, then, else,
+    case, of,
+    EQUAL, GREATER, LESS,
+    SOME, NONE, let, in, end, val
+  },
+  morestring=[b]",
+  morecomment=[s]{(*}{*)},
+}
 
 % Code Typsetting Settings
 \lstset{
@@ -163,29 +189,8 @@
   morecomment=[l][\color{RoyalBlue}]{\#} % more coloring for special strings
 }
 
-% SML Programming Declaration
-\lstdefinelanguage{sml}{
-basicstyle=\small\ttfamily,
-  captionpos=b,
-  tabsize=2,
-  columns=fixed,
-  breaklines=true,
-  numbers=none,
-  numberstyle=\small\ttfamily,
-  morekeywords= {
-    unit, int, bool, real, char, string,
-    fn, fun,
-    if, then, else,
-    case, of,
-    EQUAL, GREATER, LESS,
-    SOME, NONE, let, in, end, val
-  },
-  morestring=[b]",
-  morecomment=[s]{(*}{*)},
-}
-
 %******************************************************************************%
-%* Macros: Formatting                                                         *%
+%*                             Macros: Formatting                             *%
 %******************************************************************************%
 
 % Problem
@@ -211,7 +216,7 @@ basicstyle=\small\ttfamily,
 }
 
 %******************************************************************************%
-%* Macros: Math                                                               *%
+%*                                Macros: Math                                *%
 %******************************************************************************%
 
 % Mathematical Functions
@@ -244,6 +249,7 @@ basicstyle=\small\ttfamily,
 \newcommand{\E}{\mathbb{E}}                         % expectation 
 \newcommand{\V}{\mathbb{V}}                         % variance
 \newcommand*{\Comb}[2]{C^{#1}_{#2}}                 % combinations
+\newcommand{\distas}[1]{\overset{#1}{\sim}}         % distributions
 
 % Asymptotic Analysis
 \renewcommand{\O}{O}                                % big O
@@ -259,14 +265,17 @@ basicstyle=\small\ttfamily,
 \newcommand{\micdrop}{\QED}
 
 % Induction
-\newcommand{\pn}{Define P\left($n$\right) as: }
+\newcommand{\pn}{P$\left(n\right)$ }
+\newcommand{\pk}{P$\left(k\right)$ }
+\newcommand{\pkpo}{P$\left(k+1\right)$ }
+\newcommand{\px}[1]{P$\left(#1\right)$}
 \newcommand{\st}{\text{ s.t. }}                             
-\newcommand{\RHS}{\underline{\textsf{RHS:}}}
-\newcommand{\LHS}{\underline{\textsf{LHS:}}}
-\newcommand{\BC}{\underline{\textsf{Base Case:}}}
-\newcommand{\BCS}{\underline{\textsf{Base Cases:}}}
-\newcommand{\IH}{\underline{\textsf{Induction Hypothesis:}}}
-\newcommand{\IS}{\underline{\textsf{Induction Step:}}}
+\newcommand{\RHS}{\underline{RHS:}~}
+\newcommand{\LHS}{\underline{LHS:}~}
+\newcommand{\BC}{\underline{Base Case:}~}
+\newcommand{\BCS}{\underline{Base Cases:}~}
+\newcommand{\IH}{\underline{Induction Hypothesis:}~}
+\newcommand{\IS}{\underline{Induction Step:}~}
 
 % Calculus
 % Usage: \deriv {dependent var} {independent var}
@@ -275,13 +284,11 @@ basicstyle=\small\ttfamily,
 \newcommand{\partderiv}[2]{\frac{\partial #1}{\partial #2}} 
 % Usage: \eval {function} {var=lower bound} {upper bound}
 \renewcommand{\eval}[3]{\left.#1\right\rvert_{#2}^{#3}}
-% Usage: A \distas{distribution} B
-\newcommand{\distas}[1]{\overset{#1}{\sim}}
 % Usage: \di
 \DeclareMathOperator{\di}{d\!}
 
 %******************************************************************************%
-%* Macros: Theoretical Computer Science                                       *%
+%*                    Macros: Theoretical Computer Science                    *%
 %******************************************************************************%
 
 % Reductions
@@ -316,7 +323,7 @@ basicstyle=\small\ttfamily,
 \newcommand{\csat}{\textsf{CIRCUIT-SAT}}
 
 %******************************************************************************%
-%* Macros: Logic                                                              *%
+%*                               Macros: Logic                                *%
 %******************************************************************************%
 
 % Logical Operators
