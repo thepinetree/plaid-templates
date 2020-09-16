@@ -6,5 +6,5 @@
 
 3. Compile your document on Overleaf or locally
 ```
-pdflatex hw.tex
+$ pdflatex hw.tex
 ```  
