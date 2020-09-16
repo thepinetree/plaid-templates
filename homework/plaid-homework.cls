@@ -288,6 +288,22 @@ basicstyle=\small\ttfamily,
 \DeclareMathOperator{\di}{d\!}
 
 %******************************************************************************%
+%*                            Macros: Conditional                             *%
+%******************************************************************************%
+
+% If Exists
+% Docstring: Render #2 if #1 exists.
+\newcommand{\ifexists}[2]{%
+    \ifthenelse{\equal{#1}{}}{}{#2}%
+}
+
+% If Exists Two
+% Docstring: Render #3 if #1 and #2 exist.
+\newcommand{\ifexiststwo}[3]{%
+    \ifexists{#1}{\ifexists{#2}{#3}}%
+}
+
+%******************************************************************************%
 %*                    Macros: Theoretical Computer Science                    *%
 %******************************************************************************%
 
