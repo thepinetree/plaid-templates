@@ -1,6 +1,6 @@
 # Plaid Templates
 
-This repository features a useful set of templates for Carnegie Mellon University students.
+This repository features a useful set of templates for Carnegie Mellon University students and all university students.
 
 ### Usage
 To make these templates a part of your own life:
