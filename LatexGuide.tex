@@ -1,0 +1,585 @@
+\documentclass[11pt,onecolumn]{article}
+
+\usepackage[latin1]{inputenc}
+\usepackage{enumerate}
+\usepackage[hang,flushmargin]{footmisc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{tcolorbox}
+\usepackage{enumitem}
+\usepackage{textcomp}
+
+\theoremstyle{definition}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+
+\setlength{\oddsidemargin}{0pt}
+\setlength{\textwidth}{460pt}
+\setlength{\voffset}{-1cm}
+\setlength{\textheight}{21cm}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{10pt}
+
+\newcommand{\TT}{$\checkmark$}
+\newcommand{\FF}{$\times$}
+\DeclareMathOperator*{\E}{\mathbb{E}}
+
+\date{}
+\author{Kellen Gibson\\
+\and
+Jiaqi Liu\\
+\and
+Ananya Rao\\
+\and
+Mayank Mali}
+
+\title{{\Huge Latex Reference Document}\vspace{-2ex}}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\pagebreak
+\section{Common Pitfalls and Things to Know}
+\begin{itemize}
+    \item If regular text is rendering in italics, check that you are \textbf{not} in math mode.
+    \item If arithmetic or math operations are rendering with errors, check that you \textbf{are} in math mode.
+    \item If superscripts or subscripts are not rendered together, for example: $a_sub$ or $2^99$, make sure you enclose the entire subscript or superscript in curly braces:
+    \begin{tcolorbox}
+    a\_\{sub\} or 2\^{}\{99\}
+    \end{tcolorbox}
+    
+    \item If you want to force a space in math mode, simply type a backslash followed by a space:
+    
+    \begin{tcolorbox}
+    \$1, 2, 3, 4\$
+    \end{tcolorbox}
+    
+    renders as
+    
+    $1, 2, 3, 4$
+    
+    but
+    
+    \begin{tcolorbox}
+    \$1,\textbackslash\ 2,\textbackslash\ 3,\textbackslash\ 4\$
+    \end{tcolorbox}
+    
+    renders as 
+    
+    $1,\ 2,\ 3,\ 4$
+    
+    \item Double backslash - \textbackslash\textbackslash - forces a newline in your text, but is usually only needed for specific math/align modes. 
+    
+    For example:
+    
+    \begin{tcolorbox}
+    text1 \textbackslash \textbackslash text2
+    \end{tcolorbox}
+    
+    renders as:
+    
+    text1 \\ text2
+    
+    \item Double click on any section of the rendered PDF to jump to that section of the source code. You can also use the arrow buttons at the top of the division between the editing section and the rendered section to find corresponding text.
+\end{itemize}
+
+
+\pagebreak
+\section{Creating a Document}
+Upon logging into the main screen, the following will appear with your list of existing projects: \\\\
+\includegraphics[scale=0.3]{Login.png} 
+\begin{enumerate}
+    \item Click on ``New Project'' \\
+    \item Select ``Blank Project'' from the drop-down menu. \\
+    \item Type in the project name and click ``Create''. \\
+\end{enumerate}
+\pagebreak 
+The following markdown editor will appear: \\\\
+\includegraphics[scale=0.3]{BlankProject.png} \\\\
+The layout is divided as follows:
+\begin{itemize}
+    \item The left column allows access to various files in the project. \\
+    \item The middle section is the editor where you write the source code for your document. \\
+    \item The right-most section is a PDF rendering of your current source code. \\
+
+\end{itemize}
+Note that arrows point to commonly used buttons for adding a new file in the project, downloading the current file as a PDF, and entering full screen. \\
+
+\pagebreak
+\section{Formatting}
+\subsection{Sections}
+The sections commands are built into Latex and do \textbf{not} require any additional packages. 
+\begin{itemize}
+    \item Numbered Sections Hierarchy:
+    
+    \renewcommand{\arraystretch}{1.5}
+    \begin{center}
+    \begin{tabular}{|c|c|}
+    \hline
+    \textbf{Code} & \textbf{Output} \\
+    \hline
+    \textbackslash section\{Section Name\} & \huge{\textbf{1 Section Name}} \\
+    \hline
+    \textbackslash subsection\{Section Name\} & \Large{\textbf{1.1 Section Name}} \\
+    \hline
+    \textbackslash subsubsection\{Section Name\} & \textbf{1.1.1 Section Name} \\
+    \hline
+    \end{tabular}
+    \end{center}
+    
+\end{itemize}
+\begin{itemize}
+    \item Unnumbered Sections Hierarchy:
+    
+    \renewcommand{\arraystretch}{1.5}
+    \begin{center}
+    \begin{tabular}{|c|c|}
+    \hline
+    \textbf{Code} & \textbf{Output} \\
+    \hline
+    \textbackslash section*\{Section Name\} & \huge{\textbf{Section Name}} \\
+    \hline
+    \textbackslash subsection*\{Section Name\} & \Large{\textbf{Section Name}} \\
+    \hline
+    \textbackslash subsubsection*\{Section Name\} & \textbf{Section Name} \\
+    \hline
+    \end{tabular}
+    \end{center}
+    
+\end{itemize}
+
+\pagebreak
+\subsection{Alignment and Lists}
+
+Some environments allow you to create bulleted or numbered lists, as well as rows of text/math aligned at specific points.
+
+\begin{itemize}
+    \item Enumerated Lists \\
+    \begin{tcolorbox}
+        \textbackslash begin\{enumerate\}\\
+        \hspace*{10mm} \textbackslash item Milk \\
+        \hspace*{10mm} \textbackslash item Eggs \\
+        \textbackslash end\{enumerate\}
+    \end{tcolorbox}
+    
+    renders as,
+    
+    \begin{enumerate}
+    \item Milk
+    \item Eggs
+    \end{enumerate}
+    
+    Note that each \textbackslash item automatically gives the next number in the list.
+    
+    \item Bulleted Lists \\
+    \begin{tcolorbox}
+        \textbackslash begin\{itemize\}\\
+        \hspace*{10mm} \textbackslash item Milk \\
+        \hspace*{10mm} \textbackslash item Eggs \\
+        \textbackslash end\{itemize\}
+    \end{tcolorbox}
+    
+    renders as,
+    
+    \begin{itemize}[label=$\bullet$]
+        \item Milk
+        \item Eggs
+    \end{itemize}
+        
+    Note that each \textbackslash item gives the next bullet in the list. \\
+    \item Aligned Text:
+    
+    This environment allows you to align multiple lines in specific places. 
+    Since this is a math environment, you must surround text prose in a \textbackslash text\{\} command.
+    
+    \begin{tcolorbox}
+        \textbackslash begin\{align\}\\
+        \hspace*{10mm} \textbackslash text\{text \} \& \textbackslash \{math alignment text\}\textbackslash \textbackslash\\
+        \hspace*{10mm} \& \textbackslash text\{math alignment text\} \\
+        \textbackslash end\{align\}
+    \end{tcolorbox}
+    Note that the \& creates the column of alignment and text can go before or after. However, the align environment uses math mode by default. \\
+    The above when tranferred to text mode renders as:
+    
+    \begin{align*}
+    \text{text } & \text{alignment text}\\
+    & \text{math alignment text}
+    \end{align*}
+\end{itemize}
+
+\subsection{Bold and Italics}
+
+Creating bold and italic text is as simple as wrapping text in \textbackslash textbf\{\} and \textbackslash textit\{\} commands, respectfuly.
+
+\begin{tcolorbox}
+This was the most \textbackslash textit\{crazy\} winter \textbackslash textbf\{ever\}.
+\end{tcolorbox}
+
+renders as
+
+This was the most \textit{crazy} winter \textbf{ever}.
+
+\subsection{Quotation Marks}
+
+Suppose you want to render quotation marks. You may try writing
+
+\begin{tcolorbox}
+\textquotesingle\textquotesingle Hello, neighbor!\textquotesingle\textquotesingle
+\end{tcolorbox}
+
+and realize it renders as:
+
+"Hello, neighbor!"
+
+The \LaTeX way to write quotes is to write two backticks for the begin quote (\textasciigrave \textasciigrave) and two single quotes for the end quote (\textquotesingle\ \textquotesingle). This way you can control the direction of your quotes.
+
+\begin{tcolorbox}
+\textasciigrave\textasciigrave Hello, neighbor!\textquotesingle\textquotesingle
+\end{tcolorbox}
+
+renders as
+
+``Hello, neighbor!''
+
+\pagebreak 
+\section{Various Modes and Environments}
+
+\subsection{Math Mode}
+
+Knowing how to format math symbols and equations is invaluable knowledge to have when using \LaTeX. There are several ways to create math environments, which we will cover below. Remember to always include the \textbf{amsmath} package, which includes many useful math symbols.
+
+\textbf{To use math symbols, write the following command at the top of your document under the \texttt{documentclass} command.}
+
+\begin{tcolorbox}
+\textbackslash usepackage\{amsmath\}
+\end{tcolorbox}
+
+\subsubsection{Zoo of Math Modes}
+
+\begin{enumerate}
+    \item \$\$ - Single Dollars
+    
+    Inserting text in between two single dollars renders math symbols in place. For example:
+    
+    \begin{tcolorbox}
+    The equation is \$1 + 2 = 3\$, and that's cool!
+    \end{tcolorbox}
+    
+    renders as:\\
+    The equation is $1 + 2 = 3$, and that's cool!
+    
+    \item \$\$\$\$ - Double Dollars
+    
+    Inserting text in between two double dollars renders math symbols in the center of the page. For example:
+    
+    \begin{tcolorbox}
+    The equation is \$\$1 + 2 = 3.\$\$
+    \end{tcolorbox}
+    
+    renders as:\\
+    The equation is $$1 + 2 = 3.$$
+    
+    It is customary to put punctuation like periods or commas before the ending \$\$.
+    
+    \item the \textbf{equation*} environment
+    Inserting text in a \textbf{equation*} environment renders that text similar to double dollars (separate line and centered).
+    
+    \begin{tcolorbox}
+    \textbackslash begin\{equation*\}\\
+    1 + 1 = 2\\
+    \textbackslash end\{equation*\}
+    \end{tcolorbox}
+    
+    renders as
+    
+    \begin{equation*}
+    1 + 1 = 2
+    \end{equation*}
+    
+    Note that you can also label your equation by removing the asterisk *.
+    
+    \begin{tcolorbox}
+    \textbackslash begin\{equation\}\\
+    1 + 1 = 2\\
+    \textbackslash end\{equation\}
+    \end{tcolorbox}
+    
+    renders as
+    
+    \begin{equation}
+    1 + 1 = 2
+    \end{equation}
+    
+    \item The \textbf{\textbackslash[ \textbackslash]} environment is a shorthand for the \textbf{equation*} environment, and is considered better practice over double-dollars.
+    
+    \begin{tcolorbox}
+    \textbackslash[\\
+    1 + 1 = 2\\
+    \textbackslash]
+    \end{tcolorbox}
+    
+    renders as
+    
+    \[
+    1 + 1 = 2
+    \]
+    
+    \item the \textbf{align*} environment is special. You can align multiple lines of math equations with the \& symbol. 
+    
+    \begin{tcolorbox}
+    \textbackslash begin\{align*\}\\
+    1 + 1 + 1 + 1 \&= 2 + 1 + 1\textbackslash\textbackslash\\
+    \&= 2 + 2\textbackslash\textbackslash\\
+    \&= 4\textbackslash\textbackslash\\
+    \textbackslash end\{align*\}\\
+    \end{tcolorbox}
+    
+    renders as
+    
+    \begin{align*}
+        1 + 1 + 1 + 1 &= 2 + 1 + 1\\
+        &= 2 + 2\\
+        &= 4\\
+    \end{align*}
+    
+\end{enumerate}
+
+\subsubsection{Spacing in Math Mode}
+
+If you want to force a space in math mode, simply type a backslash followed by a space:
+    
+\begin{tcolorbox}
+\$1, 2, 3, 4\$
+\end{tcolorbox}
+
+renders as
+
+$1, 2, 3, 4$
+
+but
+
+\begin{tcolorbox}
+\$1,\textbackslash\ 2,\textbackslash\ 3,\textbackslash\ 4\$
+\end{tcolorbox}
+
+renders as 
+
+$1,\ 2,\ 3,\ 4$
+
+\subsubsection{Prose Text in Math Mode}
+
+If you need to write text inside some math mode as if it were outside math mode, then you should wrap your text inside the \textbackslash text\{\} command.
+
+\begin{tcolorbox}
+\$
+X = \textbackslash \{ x :\textbackslash \textbackslash text\{is infinite\} \textbackslash\}
+\$
+\end{tcolorbox}
+
+renders as
+
+$
+X = \{x : x\ \text{is infinite}\}
+$
+
+\subsection{Common Math Symbols}
+
+We have listed common math symbols that you can enter into any math environment listed above.
+
+\textbf{Do not copy-paste the code below into your document.} Symbols like the carrot \textrm{\^} will not render properly. 
+
+
+\renewcommand{\arraystretch}{1.5}
+\begin{center}
+    \begin{tabular}{|c|c|c|}
+    \hline
+    \textbf{Symbol} & \textbf{Example} & \textbf{Code} \\
+    \hline
+    Fractions & $\frac{5}{4}$ & $\backslash$frac\{5\}\{4\} \\
+    Square Root & $\sqrt{2}$ & $\backslash$sqrt\{2\} \\
+    Superscript & $a^{2x}$ & a\^{}\{2x\} \\
+    Subscript & $x_{15}$ & x\_{}\{15\} \\
+    Equivalent & $\equiv$ & $\backslash$equiv \\
+    Not equal to & $\neq$ & $\backslash$neq \\
+    Less than equal to & $\leq$ & $\backslash$leq \\
+    Greater than equal to & $\geq$ & $\backslash$geq \\
+    Summation & $\sum$ & $\backslash$sum \\
+    Product & $\prod$ & $\backslash$prod \\
+    Integral & $\int_{a}^{b}$ & $\backslash$int\_{}\{a\}\^{}\{b\} \\
+    Infinity & $\infty$ & $\backslash$infty \\
+    Exists & $\exists$ & $\backslash$exists \\
+    For all & $\forall$ & $\backslash$forall \\
+    Element of & $\in$ & $\backslash$in \\
+    Set union & $\cup$ & $\backslash$cup \\
+    Set intersection & $\wedge$ & $\backslash$wedge \\
+    Subset & $\subset$ & $\backslash$subset \\
+    Integers & $\mathbb{Z}$ & $\backslash$mathbb\{Z\} \\
+    Real numbers & $\mathbb{R}$ & $\backslash$mathbb\{R\} \\
+    Rational numbers & $\mathbb{Q}$ & $\backslash$mathbb\{Q\} \\
+    Natural numbers & $\mathbb{N}$ & $\backslash$mathbb\{N\} \\
+    Implies & $\implies$ & $\backslash$implies \\
+    Implied by & $\impliedby$ & $\backslash$impliedby \\
+    If and only if & $\iff$ & $\backslash$iff \\
+    \hline
+    \end{tabular}
+\end{center}
+
+\subsection{Matrices}
+
+To create a matrix, you use a matrix environment \textit{inside} some math environment. We will present a few matrix environments below.
+
+\subsubsection{Zoo of Matrix Environments}
+
+\begin{enumerate}
+    \item \textbf{matrix}
+    
+    This environment creates a matrix with no surrounding punctuation.
+    
+    \begin{tcolorbox}
+    \$
+    \textbackslash begin\{matrix\}\\
+        a \& b\textbackslash\textbackslash\\
+        c \& d\\
+    \textbackslash end\{matrix\}
+    \$
+    \end{tcolorbox}
+    
+    $
+    \begin{matrix}
+        a & b\\
+        c & d
+    \end{matrix}
+    $
+    
+    \item \textbf{pmatrix}
+    
+    This environment creates a matrix with parenthesis as surrounding punctuation.
+    
+    \begin{tcolorbox}
+    \$
+    \textbackslash begin\{pmatrix\}\\
+        a \& b\textbackslash\textbackslash\\
+        c \& d\\
+    \textbackslash end\{pmatrix\}
+    \$
+    \end{tcolorbox}
+    
+    $\begin{pmatrix}
+        a & b\\
+        c & d
+    \end{pmatrix}$
+    
+    \item \textbf{bmatrix}
+    
+    This environment creates a matrix with brackets as surrounding punctuation.
+    
+    \begin{tcolorbox}
+    \$
+    \textbackslash begin\{bmatrix\}\\
+        a \& b\textbackslash\textbackslash\\
+        c \& d\\
+    \textbackslash end\{bmatrix\}
+    \$
+    \end{tcolorbox}
+    
+    $\begin{bmatrix}
+        a & b\\
+        c & d
+    \end{bmatrix}$
+\end{enumerate}
+
+\subsubsection{Creating matrices with Arbitrary Dimensions}
+
+Suppose you have a $4\times 5$ sized matrix, you would add \&s between every column, like so:
+
+\begin{tcolorbox}
+\$
+\textbackslash begin\{bmatrix\}\\
+    1 \& 0 \& 0 \& 0 \& 0\textbackslash\textbackslash\\
+    0 \& 1 \& 0 \& 0 \& 0\textbackslash\textbackslash\\
+    0 \& 0 \& 1 \& 0 \& 0\textbackslash\textbackslash\\
+    0 \& 0 \& 0 \& 1 \& 0\textbackslash\textbackslash\\
+\textbackslash end\{bmatrix\}
+\$
+\end{tcolorbox}
+
+renders as
+
+$
+\begin{bmatrix}
+1 & 0 & 0 & 0 & 0\\
+0 & 1 & 0 & 0 & 0\\
+0 & 0 & 1 & 0 & 0\\
+0 & 0 & 0 & 1 & 0\\
+\end{bmatrix}
+$
+
+\subsection{Inserting Code}
+
+Often times in CS classes you will need to write pseudocode or an algorithm in a language such as Python, C, or SML. You could just write your code as prose in \LaTeX, but making sure that reserved symbols like \% and \textbackslash\ from your code render as their literal representation is hard. To make this easy, there is a text environment that renders any text you write literally.
+
+\begin{enumerate}
+    \item First, under your \textbf{documentclass} command at the top of your document, you need to import the \textbf{listings} package like this:
+    
+    \begin{tcolorbox}
+        \textbackslash usepackage\{listings\}
+    \end{tcolorbox}
+    
+    \item Then, suppose you want to insert some text that looks like code. You should create a \textbf{lstlisting} environment like this:
+    
+    \begin{tcolorbox}
+        \textbackslash begin\{lstlisting\}\\
+        \textbackslash end\{lstlisting\}
+    \end{tcolorbox}
+    
+    Then you can enter your code:
+    
+    \begin{tcolorbox}
+        \textbackslash begin\{lstlisting\}\\
+        a = 0\\
+        b = a + 1\\
+        print(b)\\
+        \textbackslash \{lstlisting\}
+    \end{tcolorbox}
+    
+    This should render as
+    
+    \begin{lstlisting}
+    a = 0
+    b = a + 1
+    print(b)
+    \end{lstlisting}
+    
+\end{enumerate}
+
+\subsection{Images}
+Images are inserted into documents in latex using the \textbf{graphicx} package. \\
+To use this package, include the following line after the $\backslash$documentclass command: 
+\begin{tcolorbox}
+\text{$\backslash$usepackage$\{$graphicx$\}$}
+\end{tcolorbox}
+Let's say the image you want to insert is in the file \textit{sampleimage.png}. 
+\begin{enumerate}
+    \item Upload the image to Overleaf \\
+    Click on the upload symbol (shown below) and pick the file to upload \\
+    \includegraphics[scale=0.3]{Upload.png}
+    \item Insert the uploaded image \\
+    Use the following command to insert the image into the document
+    \begin{tcolorbox}
+        \text{$\backslash$includegraphics[scale=0.2]$\{$sampleimage.png$\}$}
+    \end{tcolorbox}
+    The value assigned to scale decides how large the image is. \\
+    (Note: You can also size images by specifying width instead of scale, for example, width=100mm instead of scale=0.2)
+\end{enumerate}
+
+\end{document}
